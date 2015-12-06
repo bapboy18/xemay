@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206155015) do
+ActiveRecord::Schema.define(version: 20151206171450) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.integer  "phone_number", limit: 4
+    t.text     "description",  limit: 65535
+    t.integer  "rating",       limit: 4
+    t.boolean  "portable"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255
