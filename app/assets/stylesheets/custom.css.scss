@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 /* universal */
 
 body {
@@ -36,8 +42,6 @@ footer {
 }
 
 
-/* create css for seperate model in next pull*/
-
 /* sidebar */
 
 aside {
@@ -66,11 +70,30 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
 }
 
-.gravatar_edit {
-  margin-top: 15px;
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }
