@@ -2,7 +2,10 @@ class ReviewsController < ApplicationController
   before_action :logged_in_user
 
   def index
+  end
 
+  def new
+    @review = Review.new
   end
 
   def create
