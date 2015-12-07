@@ -16,6 +16,7 @@ gem "devise"
 
 group :development, :test do
   gem "mysql2"
+  gem "faker"
   gem "byebug"
   gem "pry"
 end
