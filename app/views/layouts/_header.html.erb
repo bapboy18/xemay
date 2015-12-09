@@ -2,8 +2,9 @@
   <div class="container">
     <ul class="nav navbar-nav">
       <li><%= link_to "Home", '#', id: "logo" %></li>
-      <li><%= link_to "Grage" %></li>
-      <li><%= link_to "Petrol" %></li>
+      <li><%= link_to "Grage", "#" %></li>
+      <li><%= link_to "Petrol", "#" %></li>
+      <li><%= link_to  "Region", "#" %></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
@@ -15,7 +16,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", '#' %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
             <li class="divider"></li>
             <li>
               <%= link_to "Log out", logout_path, method: "delete" %>
