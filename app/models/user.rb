@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   class << self
     def digest(string)
