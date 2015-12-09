@@ -1,7 +1,12 @@
 class ReviewsController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in_user, except: [:index, :show]
 
   def index
+    @reviews = Review.all
+  end
+
+  def show
+
   end
 
   def new
