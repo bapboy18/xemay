@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "static_pages#home"
+  root "reviews#index"
 
   get "signup"  => "users#new"
 
