@@ -2,6 +2,9 @@ class ReviewsController < ApplicationController
   before_action :logged_in_user
 
   def index
+    # User.all.each -> reviews.default_scope
+
+    @reviews = Review.all.default_scope
   end
 
   def new
