@@ -1,5 +1,7 @@
 class Review < ActiveRecord::Base
   has_many :comments, dependent: :destroy
+  has_many :descriptions, dependent: :destroy
+  has_many :addresses, dependent: :destroy
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true

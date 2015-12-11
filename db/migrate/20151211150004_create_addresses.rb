@@ -1,9 +1,10 @@
 class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
-      t.float :lng
+      t.string :province
+      t.string :town
       t.float :lat
-      t.string :address
+      t.float :lng
 
       t.timestamps null: false
     end
