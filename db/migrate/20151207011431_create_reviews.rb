@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration
       t.text :content
       t.integer :phone_number
       t.boolean :portable
+      t.float :rating
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
