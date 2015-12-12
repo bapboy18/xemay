@@ -3,8 +3,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::MiniMagick
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
 
   # Uncomment these lines to enable thumbnails, change size as required.
   version :thumb do

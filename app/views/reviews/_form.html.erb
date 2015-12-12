@@ -15,8 +15,6 @@
       <span>Portable </span>
     <% end %>
 
-    <%= f.label :photo %><br />
-
     <%= f.fields_for :address do |f2| %>
       <%= f2.label :province %>
       <%= f2.text_field :province %>
@@ -33,13 +31,22 @@
       <%= link_to "Get Lat Lng here", "#" %><br />
      <% end %>
 
-    <%= fields_for :description do |f3| %>
+    <%= f.fields_for :description do |f3| %>
       <%= f3.label :name %>
       <%= f3.text_field :name %>
 
       <%= f3.label :price %>
       <%= f3.text_field :price %>
     <% end %>
+
+    <%= f.fields_for :review_images do |review_image|  %>
+      <% if review_image.object.new_record? %>
+        <%= review_image.file_field :image %>
+      <% else %>
+        <%= image_tag(review_image.object.image.url(:thumb)) %>
+        <%= review_image.check_box :_destroy %>
+      <% end %>
+    <% end %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
