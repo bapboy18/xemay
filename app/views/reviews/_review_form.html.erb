@@ -7,18 +7,15 @@
     <%= f.label :phone_number %>
     <%= f.text_field :phone_number %>
 
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+
     <%= f.label :p, class: "checkbox inline" do %>
       <%= f.check_box :portable %>
       <span>Portable </span>
     <% end %>
 
     <%= f.label :photo %>
-
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
