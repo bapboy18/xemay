@@ -7,7 +7,10 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
+    @review = Review.find params[:id]
+    @user = @review.user
+    @address = @review.address
+    @description = @review.description
     @images = @review.review_images
     respond_to do |format|
       format.html
