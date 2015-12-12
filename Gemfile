@@ -12,10 +12,12 @@ gem "jquery-rails"
 gem "turbolinks"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
-gem "devise"
+gem "carrierwave"
+gem "rmagick"
 
 group :development, :test do
-  gem "mysql2"
+  # gem "mysql2"
+  gem "mysql2", "~> 0.3.18"
   gem "faker"
   gem "byebug"
   gem "pry"

@@ -15,7 +15,7 @@
       <span>Portable </span>
     <% end %>
 
-    <%= f.label :photo %>
+    <%= f.label :photo %><br />
 
     <%= f.fields_for :address do |f2| %>
       <%= f2.label :province %>
@@ -30,7 +30,7 @@
       <%= f2.label :lng %>
       <%= f2.text_field :lng %>
 
-      <%= link_to "Get Lat Lng here", "#" %>
+      <%= link_to "Get Lat Lng here", "#" %><br />
      <% end %>
 
     <%= fields_for :description do |f3| %>

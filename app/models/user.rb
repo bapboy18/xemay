@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one :avatar, validate: false
+  accepts_nested_attributes_for :avatar, allow_destroy: true
 
   class << self
     def digest(string)
