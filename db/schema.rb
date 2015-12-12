@@ -36,18 +36,10 @@ ActiveRecord::Schema.define(version: 20151211150004) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "content",    limit: 255
-    t.integer  "rating",     limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string   "name",         limit: 255
     t.text     "content",      limit: 65535
     t.integer  "phone_number", limit: 4
-    t.text     "description",  limit: 65535
     t.boolean  "portable"
     t.integer  "user_id",      limit: 4
     t.datetime "created_at",                 null: false
