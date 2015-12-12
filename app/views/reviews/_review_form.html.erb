@@ -16,6 +16,30 @@
     <% end %>
 
     <%= f.label :photo %>
+
+    <%= f.fields_for :address do |f2| %>
+      <%= f2.label :province %>
+      <%= f2.text_field :province %>
+
+      <%= f2.label :town %>
+      <%= f2.text_field :town %>
+
+      <%= f2.label :lat %>
+      <%= f2.text_field :lat %>
+
+      <%= f2.label :lng %>
+      <%= f2.text_field :lng %>
+
+      <%= link_to "Get Lat Lng here", "#" %>
+     <% end %>
+
+    <%= fields_for :description do |f3| %>
+      <%= f3.label :name %>
+      <%= f3.text_field :name %>
+
+      <%= f3.label :price %>
+      <%= f3.text_field :price %>
+    <% end %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

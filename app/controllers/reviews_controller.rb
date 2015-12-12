@@ -29,6 +29,9 @@ class ReviewsController < ApplicationController
 
   private
   def reviews_params
-    params.require(:micropost).permit(:content)
+    params.require(:micropost).permit(:name, :content, :phone_number, :portable,
+      addresses_attributes: [:id, :province, :town, :lat, :lng],
+      descriptions_attributes: [:id, :name, :price]
+    )
   end
 end
