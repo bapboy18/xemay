@@ -1,3 +1,36 @@
-<% @review.review_images.each do |review_image| %>
-  <%= link_to(image_tag(review_image.image.url(:thumb)), review_image.image.url) %>
-<% end %>
+<% provice(:title, @review) %>
+<%= link_to "<% @user.name %>", user_path(@user) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <% @review.review_images.each do |review_image| %>
+        <%= image_tag(review_image.image.url(:thumb)) %>
+      <% end %>
+    </section>
+  </aside>
+  <aside class="col-md-8">
+    <section class="section-review">
+      <h3 class="review-name"><%= @review.name %></h3>
+      <h4 class="review-content"><%= @review.content %></h4>
+      <h5 class="review-phone-number"><%= @review.phone_number %></h5>
+      <h5>Portable: </h5>
+    </section>
+    <section class="section-address">
+      <h4><%= @address.province, @address.town %></h4>
+    </section>
+    <section>
+      <h4>Description</h4>
+      <table>
+        <tr>
+          <th>Accessories</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td><%= @description.name %></td>
+          <td><%= @description.price %></td>
+        </tr>
+      </table>
+    </section>
+  </aside>
+</div>
