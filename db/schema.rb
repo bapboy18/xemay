@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211150004) do
+ActiveRecord::Schema.define(version: 20151212092622) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "province",   limit: 255
     t.string   "town",       limit: 255
     t.float    "lat",        limit: 24
     t.float    "lng",        limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "avatars", force: :cascade do |t|
+    t.string   "image",      limit: 255
+    t.string   "user_id",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

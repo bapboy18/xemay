@@ -4,10 +4,20 @@ class UsersController < ApplicationController
   def show
     @user = User.find params[:id]
     @reviews = @user.reviews
+    @image = @user.avatar
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+    end
   end
 
   def new
     @user = User.new
+    @user.build_avatar if @user.avatar.nil?
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+    end
   end
 
   def create
@@ -23,6 +33,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
+    @user.avatar.build
   end
 
   def update
@@ -38,7 +49,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+      :password_confirmation, avatar_attributes: [:id, :image])
   end
 
   def logged_in_user

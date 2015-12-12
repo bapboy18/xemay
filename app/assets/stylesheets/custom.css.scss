@@ -142,3 +142,14 @@ span.picture {
 .nav-tabs >li >a {
   color: red;
 }
+
+/* avatar */
+
+#user_avatar {
+  width: 100px;
+  height: 100px;
+}
+
+#user_avatar .avatar {
+  height: 100%;
+}
