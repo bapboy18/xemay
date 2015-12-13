@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="input-group">
+    <%= search_form_for @q do |f| %>
+      <%= f.select :address_region_id_eq,
+        options_from_collection_for_select(Region.all, "id", "name",
+          @q.address_region_id_eq), include_blank: true %>
+
+      <span class="input-group-btn">
+        <%= f.submit "Seach", class: "btn btn-default" %>
+      </span>
+    <% end %>
+  </div>
+</div>

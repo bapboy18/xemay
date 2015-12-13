@@ -14,6 +14,7 @@ gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "carrierwave"
 gem "mini_magick"
+gem "ransack"
 
 group :development, :test do
   gem "mysql2", "~> 0.3.18"
