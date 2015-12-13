@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :reviews do
     resources :comments
+    resources :addresses
   end
   resources :users
 end
