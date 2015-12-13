@@ -76,10 +76,12 @@ ActiveRecord::Schema.define(version: 20151212154635) do
     t.boolean  "portable"
     t.float    "rating",       limit: 24
     t.integer  "user_id",      limit: 4
+    t.integer  "region_id",    limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "reviews", ["region_id"], name: "index_reviews_on_region_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -96,5 +98,6 @@ ActiveRecord::Schema.define(version: 20151212154635) do
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
   add_foreign_key "descriptions", "reviews"
+  add_foreign_key "reviews", "regions"
   add_foreign_key "reviews", "users"
 end
