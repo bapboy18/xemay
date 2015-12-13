@@ -1,0 +1,6 @@
+<div class="row">
+  <%= form_for [@review, @comment], remote: true do |f|%>
+    <div class="col-md-11"><%= f.text_area :content %></div>
+    <div class="col-md-1"><%= f.submit :comment, class:"btn btn-primary btn-xs" %></div>
+  <% end %>
+</div>

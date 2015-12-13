@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post   "login"   => "sessions#create"
   delete "logout"  => "sessions#destroy"
 
+  get    "dash"   => "dashboard#index"
+
   resources :reviews do
     resources :comments
   end
