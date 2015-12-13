@@ -1,52 +1,56 @@
 <%= form_for  @review do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group row">
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
 
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, class: "form-control" %>
 
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+        <%= f.label :content %>
+        <%= f.text_area :content, class: "form-control" %>
 
-    <%= f.label :p, class: "checkbox inline" do %>
-      <%= f.check_box :portable %>
-      <span>Portable </span>
-    <% end %>
+        <%= f.label :p, class: "checkbox inline" do %>
+          <%= f.check_box :portable %>
+          <span>Portable </span>
+        <% end %>
 
-    <%= f.fields_for :address do |f2| %>
-      <%= f2.label :province %>
-      <%= f2.text_field :province %>
+        <%= f.fields_for :address do |f2| %>
+          <%= f2.label :province %>
+          <%= f2.text_field :province, class: "form-control" %>
 
-      <%= f2.label :town %>
-      <%= f2.text_field :town %>
+          <%= f2.label :town %>
+          <%= f2.text_field :town, class: "form-control" %>
 
-      <%= f2.label :lat %>
-      <%= f2.text_field :lat %>
+          <%= f2.label :lat %>
+          <%= f2.text_field :lat, class: "form-control" %>
 
-      <%= f2.label :lng %>
-      <%= f2.text_field :lng %>
+          <%= f2.label :lng %>
+          <%= f2.text_field :lng, class: "form-control" %>
 
-      <%= link_to "Get Lat Lng here", "#" %><br />
-     <% end %>
+          <%= link_to "Get Lat Lng here", "#" %><br />
+         <% end %>
 
-    <%= f.fields_for :descriptions do |f3| %>
-      <%= f3.label :name %>
-      <%= f3.text_field :name %>
+        <%= f.fields_for :descriptions do |f3| %>
+          <%= f3.label :name %>
+          <%= f3.text_field :name, class: "form-control" %>
 
-      <%= f3.label :price %>
-      <%= f3.text_field :price %>
-    <% end %>
+          <%= f3.label :price %>
+          <%= f3.text_field :price, class: "form-control" %>
+        <% end %>
 
-    <%= f.fields_for :review_images do |review_image|  %>
-      <% if review_image.object.new_record? %>
-        <%= review_image.file_field :image %>
-      <% else %>
-        <%= image_tag(review_image.object.image.url(:thumb)) %>
-        <%= review_image.check_box :_destroy %>
-      <% end %>
-    <% end %>
+        <%= f.fields_for :review_images do |review_image|  %>
+          <% if review_image.object.new_record? %>
+            <%= review_image.file_field :image, class: "form-control" %>
+          <% else %>
+            <%= image_tag(review_image.object.image.url(:thumb)) %>
+            <%= review_image.check_box :_destroy %>
+          <% end %>
+        <% end %>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
