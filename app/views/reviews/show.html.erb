@@ -10,10 +10,12 @@
   </aside>
   <aside class="col-md-8">
     <section class="section-review">
-      <h3 class="review-name"><% @review.name %></h3>
-      <h4 class="review-content"><% @review.content %></h4>
-      <h5 class="review-phone-number"><% @review.phone_number %></h5>
-      <h5>Portable: </h5>
+      <% if @review %>
+        <h3 class="review-name"><%= @review.name %></h3>
+        <h4 class="review-content"><%= @review.content %></h4>
+        <h5 class="review-phone-number"><%= @review.phone_number %></h5>
+        <h5>Portable: </h5>
+      <% end %>
     </section>
     <section class="section-address">
       <% if @address %>
