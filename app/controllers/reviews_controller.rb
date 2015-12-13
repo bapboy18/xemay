@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:name, :content, :phone_number, :portable,
+    params.require(:review).permit(:name, :content, :phone_number, :portable, :rating,
       addresses_attributes: [:id, :province, :town, :lat, :lng],
       descriptions_attributes: [:id, :name, :price],
       review_images_attributes: [:id, :image]
