@@ -53,4 +53,12 @@
       </section>
     </aside>
   </div>
+
+  <div id="comments">
+    <% @review.comments.each do |comment| %>
+      <%= render "comments/comment",comment: comment %>
+    <% end %>
+  </div>
+
+  <%= render "comments/form" %>
 </div>

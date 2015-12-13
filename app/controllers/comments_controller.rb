@@ -1,14 +1,9 @@
 class CommentsController < ApplicationController
-
   def create
     @review = Review.find params[:review_id]
-    @comment = @review.comments.create comment_params
-    @comment.user_id = current_user.user_id
-    if @comment.save
-      redirect_to @review
-    else
-      flash[:danger] = "Can not comment now"
-    end
+    @comment = @review.comments.new comment_params
+    @comment.user_id = current_user.id
+    @comment.save
   end
 
   private

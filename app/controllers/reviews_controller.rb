@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
     @address = @review.address
     @descriptions = @review.descriptions
     @images = @review.review_images
+    @comment = @review.comments.build
     respond_to do |format|
       format.html
       format.json { render json: @review }
