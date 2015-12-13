@@ -1,13 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, except: [:index, :show]
-  # before_action :find_review, only: [:show, :edit]
+  before_action :find_review, only: [:show, :edit]
 
   def index
     @reviews = Review.all
   end
 
   def show
-    @review = Review.find(params[:id])
     @images = @review.review_images
     respond_to do |format|
       format.html
@@ -35,7 +34,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
     @review.review_images.build
   end
 
