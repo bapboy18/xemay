@@ -18,9 +18,12 @@ ActiveRecord::Schema.define(version: 20151212154635) do
     t.string   "town",       limit: 255
     t.float    "lat",        limit: 24
     t.float    "lng",        limit: 24
+    t.integer  "review_id",  limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "addresses", ["review_id"], name: "index_addresses_on_review_id", using: :btree
 
   create_table "avatars", force: :cascade do |t|
     t.string   "image",      limit: 255
@@ -32,16 +35,24 @@ ActiveRecord::Schema.define(version: 20151212154635) do
   create_table "comments", force: :cascade do |t|
     t.string   "content",    limit: 255
     t.integer  "rating",     limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "review_id",  limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  add_index "comments", ["review_id"], name: "index_comments_on_review_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "descriptions", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "price",      limit: 4
+    t.integer  "review_id",  limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "descriptions", ["review_id"], name: "index_descriptions_on_review_id", using: :btree
 
   create_table "review_images", force: :cascade do |t|
     t.string   "image",      limit: 255
@@ -55,12 +66,12 @@ ActiveRecord::Schema.define(version: 20151212154635) do
     t.text     "content",      limit: 65535
     t.integer  "phone_number", limit: 4
     t.boolean  "portable"
+    t.float    "rating",       limit: 24
     t.integer  "user_id",      limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "reviews", ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -72,5 +83,9 @@ ActiveRecord::Schema.define(version: 20151212154635) do
     t.string   "remember_digest", limit: 255
   end
 
+  add_foreign_key "addresses", "reviews"
+  add_foreign_key "comments", "reviews"
+  add_foreign_key "comments", "users"
+  add_foreign_key "descriptions", "reviews"
   add_foreign_key "reviews", "users"
 end

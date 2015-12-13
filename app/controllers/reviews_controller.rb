@@ -7,6 +7,9 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @user = @review.user
+    @address = @review.address
+    @descriptions = @review.descriptions
     @images = @review.review_images
     respond_to do |format|
       format.html
@@ -17,10 +20,12 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @review.review_images.build
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @review }
-    # end
+    @review.build_address
+    @review.descriptions.build
+    respond_to do |format|
+      format.html
+      format.json { render json: @review }
+    end
   end
 
   def create
@@ -29,7 +34,7 @@ class ReviewsController < ApplicationController
       flash[:success] = "Review created!"
       redirect_to root_url
     else
-      render "static_pages/home"
+      render "new"
     end
   end
 
