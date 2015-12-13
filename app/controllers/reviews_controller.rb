@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, except: [:index, :show]
-  before_action :find_review, only: [:show, :edit]
+  before_action :find_review, only: [:show, :edit, :update]
 
   def index
     @q = Review.ransack(params[:q])
@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.build(review_params)
     if @review.save
       flash[:success] = "Review created!"
-      redirect_to root_url
+      redirect_to @review
     else
       render "new"
     end
@@ -43,13 +43,22 @@ class ReviewsController < ApplicationController
     @review.review_images.build
   end
 
+  def update
+    if @review.update_attributes review_params
+      flash[:success] = "Review updated"
+      redirect_to @review
+    else
+      render "edit"
+    end
+  end
+
   def destroy
   end
 
   private
   def review_params
     params.require(:review).permit(:name, :content, :phone_number, :portable, :rating,
-      address_attributes: [:id, :province, :town, :lat, :lng],
+      address_attributes: [:id, :name, :lat, :lng],
       descriptions_attributes: [:id, :name, :price],
       review_images_attributes: [:id, :image]
     )

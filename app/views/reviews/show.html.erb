@@ -1,43 +1,56 @@
-<%= link_to @user.name, user_path %>
+<div class="map">
+  <div id="googleMap" style="width:100%;height:400px;"></div>
+  <input type="hidden" value="<%= @address.lat %>" id="address_lat">
+  <input type="hidden" value="<%= @address.lng %>" id="address_lng">
+</div>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section>
-      <% @review.review_images.each do |review_image| %>
-        <%= image_tag(review_image.image.url(:thumb)) %>
-      <% end %>
-    </section>
-  </aside>
-  <aside class="col-md-8">
-    <section class="section-review">
-      <% if @review %>
-        <h3 class="review-name"><%= @review.name %></h3>
-        <h4 class="review-content"><%= @review.content %></h4>
-        <h5 class="review-phone-number"><%= @review.phone_number %></h5>
-        <h5>Portable: </h5>
-      <% end %>
-    </section>
-    <section class="section-address">
-      <% if @address %>
-        <h4><%= @address.province %>, <%= @address.town %></h4>
-      <% end %>
-    </section>
-    <section>
-      <h3>Description</h3>
-      <% unless @descriptions.blank? %>
-        <table>
-          <tr>
-            <th>Accessories</th>
-            <th>Price</th>
-          </tr>
-          <tr>
-            <% @descriptions.each do |description| %>
-              <td><%= description.name %></td>
-              <td><%= description.price %></td>
-            <% end %>
-          </tr>
-        </table>
-      <% end %>
-    </section>
-  </aside>
+<div class="review-content">
+  <h3><%= link_to @user.name, user_path %></h3>
+
+  <div class="row">
+    <aside class="col-md-4">
+      <section>
+        <% @review.review_images.each do |review_image| %>
+          <%= image_tag(review_image.image.url(:thumb)) %>
+        <% end %>
+      </section>
+    </aside>
+    <aside class="col-md-8">
+      <section class="section-review">
+        <% if @review %>
+          <h3 class="review-name"><%= link_to @review.name, "#" %></h3>
+          <h4 class="review-content"><%= @review.content %></h4>
+          <h5 class="review-phone-number">DT: <%= @review.phone_number %></h5>
+          <% if @review.portable %>
+            <h5>Portable: Yes</h5>
+          <% else %>
+            <h4>Portable: No</h4>
+          <% end %>
+        <% end %>
+      </section>
+      <section class="section-address">
+        <h4>Address</h4>
+        <% if @address %>
+          <h4><%= @address.name %></h4>
+        <% end %>
+      </section>
+      <section>
+        <h3>Description</h3>
+        <% unless @descriptions.blank? %>
+          <table>
+            <tr>
+              <th>Accessories</th>
+              <th>Price</th>
+            </tr>
+            <tr>
+              <% @descriptions.each do |description| %>
+                <td><%= description.name %></td>
+                <td><%= description.price %></td>
+              <% end %>
+            </tr>
+          </table>
+        <% end %>
+      </section>
+    </aside>
+  </div>
 </div>
