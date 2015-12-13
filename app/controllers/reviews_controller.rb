@@ -3,7 +3,9 @@ class ReviewsController < ApplicationController
   before_action :find_review, only: [:show, :edit]
 
   def index
-    @reviews = Review.all
+    @q = Review.ransack(params[:q])
+    @reviews = @q.result(distinct: true)
+    # @reviews = Review.all
   end
 
   def show

@@ -14,15 +14,16 @@
 ActiveRecord::Schema.define(version: 20151212154635) do
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "province",   limit: 255
-    t.string   "town",       limit: 255
+    t.string   "name",       limit: 255
     t.float    "lat",        limit: 24
     t.float    "lng",        limit: 24
     t.integer  "review_id",  limit: 4
+    t.integer  "region_id",  limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  add_index "addresses", ["region_id"], name: "index_addresses_on_region_id", using: :btree
   add_index "addresses", ["review_id"], name: "index_addresses_on_review_id", using: :btree
 
   create_table "avatars", force: :cascade do |t|
@@ -54,6 +55,13 @@ ActiveRecord::Schema.define(version: 20151212154635) do
 
   add_index "descriptions", ["review_id"], name: "index_descriptions_on_review_id", using: :btree
 
+  create_table "regions", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "province_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "review_images", force: :cascade do |t|
     t.string   "image",      limit: 255
     t.string   "review_id",  limit: 255
@@ -83,6 +91,7 @@ ActiveRecord::Schema.define(version: 20151212154635) do
     t.string   "remember_digest", limit: 255
   end
 
+  add_foreign_key "addresses", "regions"
   add_foreign_key "addresses", "reviews"
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
