@@ -1,3 +1,5 @@
 <% @review.review_images.each do |review_image| %>
-  <%= link_to(image_tag(review_image.image.url(:thumb)), review_image.image.url) %>
+  <%= image_tag(review_image.image.url(:thumb)) %>
 <% end %>
+
+<%= subscribe_to "/comments/new" %>

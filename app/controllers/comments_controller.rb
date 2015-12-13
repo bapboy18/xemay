@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
 
   def create
-    @review = Review.find params[:review_id]
-    @comment = @review.comments.create comment_params
-    @comment.user_id = current_user.user_id
-    if @comment.save
-      redirect_to @review
-    else
-      flash[:danger] = "Can not comment now"
+    @comment = Comment.create! comment_params
+    respond_to do |format|
+      format.html { }
+      format.js
     end
+  end
+
+  def destroy
+    @comment = Comment.find params[:id]
+    @comment.destroy
+    redirect_to :back
   end
 
   private
