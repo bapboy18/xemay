@@ -1,7 +1,10 @@
-<li id="review-<%= review.id %>">
-  <span class="user"><%= link_to review.user.name, review.user %></span>
-  <span class="content"><%= review.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(review.created_at) %> ago.
-  </span>
-</li>
+<div class="row">
+  <div class="col-md-2">
+    <h4><%= link_to review.user.name, review.user %></h4>
+  </div>
+  <div class="col-md-10">
+    <h3><%= link_to review.name, review_path(review) %></h3>
+    <h4><%= review.content %></h4>
+    <h5>Posted <%= time_ago_in_words(review.created_at) %> ago.</h5>
+  </div>
+</div>
