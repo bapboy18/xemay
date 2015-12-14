@@ -29,7 +29,7 @@ window.onload = loadScript;
 
 function getLocation() {
   // Check address co latlng chua
-  if ($("#address_lat").val() == ""){
+  if ($("#address_lat").val() == "") {
 
   // trong truong hop address chua co lat lng
     if (navigator.geolocation) {
@@ -39,7 +39,7 @@ function getLocation() {
     }
   }else {
     // truong da co lat lng
-    var location = new google.maps.LatLng($("#address_lat").val(),$("#address_lng").val());
+    var location = new google.maps.LatLng($("#address_lat").val(), $("#address_lng").val());
     marker = new google.maps.Marker({
       position: location,
       map: map,

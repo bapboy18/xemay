@@ -1,4 +1,8 @@
-class AddressesController.rb < ApplicationController
+class AddressesController < ApplicationController
+
+  def index
+    @addresses = Address.all
+  end
 
   def create
     @review = Review.find params[:review_id]

@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @regions = Region.all
     @review.review_images.build
     @review.build_address
     @review.descriptions.build
@@ -41,7 +42,13 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review.review_images.build
+    # @review.review_images.build
+    # binding.pry
+    # @review.user_id = current_user.id
+    # @review.build review_params
+    # @review.review_images.build
+    # @review.build_address
+    # @review.descriptions.build
   end
 
   def update
@@ -58,14 +65,14 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:name, :content, :phone_number, :portable, :rating,
-      address_attributes: [:id, :name, :lat, :lng],
+    params.require(:review).permit(:user_id, :name, :content, :phone_number, :portable, :rating,
+      address_attributes: [:id, :region_id, :name, :lat, :lng],
       descriptions_attributes: [:id, :name, :price],
       review_images_attributes: [:id, :image]
     )
   end
 
   def find_review
-    @review = Review.find(params[:id])
+    @review = Review.find params[:id]
   end
 end

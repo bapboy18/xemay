@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   post   "login"   => "sessions#create"
   delete "logout"  => "sessions#destroy"
 
-  get    "dash"   => "dashboard#index"
+  get  "map"  => "addresses#index"
 
   resources :reviews do
     resources :comments
   end
+  resources :addresses
   resources :users
 end

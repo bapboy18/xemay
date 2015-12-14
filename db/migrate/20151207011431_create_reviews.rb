@@ -7,7 +7,6 @@ class CreateReviews < ActiveRecord::Migration
       t.boolean :portable
       t.float :rating
       t.references :user, index: true, foreign_key: true
-      t.references :region, index: true, foreign_key: true
 
       t.timestamps null: false
     end
