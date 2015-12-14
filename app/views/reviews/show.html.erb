@@ -56,7 +56,6 @@
 
   <div id="comments">
     <% @review.comments.each do |comment| %>
-      <%#= link_to comment.user.name, "#" %>
       <%= render "comments/comment",comment: comment %>
     <% end %>
   </div>
