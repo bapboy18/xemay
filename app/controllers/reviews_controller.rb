@@ -44,6 +44,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review.review_images.build
+    # @user.avatar.build
   end
 
   def update
