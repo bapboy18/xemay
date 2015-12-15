@@ -1,14 +1,11 @@
-class AddressesController.rb < ApplicationController
+class AddressesController < ApplicationController
 
-  def create
-    @review = Review.find params[:review_id]
-    @address = @review.addresses.new address_params
-    # @address.region_id = @review.region_id
-    @address.save
+  def index
+    @addresses = Address.all
   end
 
   private
   def address_params
-    params.require(:address).permit :review_id, :name, :lat, :lng
+    params.require(:address).permit :region_id, :review_id, :name, :lat, :lng
   end
 end

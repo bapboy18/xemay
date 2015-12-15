@@ -27,14 +27,15 @@
           <%= f2.label :name %>
           <%= f2.text_field :name, class: "form-control" %>
 
+          <%= link_to "Get Lat Lng here", "http://www.latlong.net/" %><br />
+
           <%= f2.label :lat %>
           <%= f2.text_field :lat, class: "form-control" %>
 
           <%= f2.label :lng %>
           <%= f2.text_field :lng, class: "form-control" %>
 
-
-          <%= link_to "Get Lat Lng here", "http://www.latlong.net/" %><br />
+          <%= f2.collection_select(:region_id, @regions, :id, :name) %>
          <% end %>
       </div>
 

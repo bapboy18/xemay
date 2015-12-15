@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, except: [:index, :show]
   before_action :find_review, only: [:show, :edit, :update]
+  before_action :regions
 
   def index
     @q = Review.ransack(params[:q])
@@ -21,6 +22,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @regions = Region.all
     @review.review_images.build
     @review.build_address
     @review.descriptions.build
@@ -42,6 +44,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review.review_images.build
+    # @user.avatar.build
   end
 
   def update
@@ -58,14 +61,18 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:name, :content, :phone_number, :portable, :rating,
-      address_attributes: [:id, :name, :lat, :lng],
+    params.require(:review).permit(:user_id, :name, :content, :phone_number, :portable, :rating,
+      address_attributes: [:id, :region_id, :name, :lat, :lng],
       descriptions_attributes: [:id, :name, :price],
       review_images_attributes: [:id, :image]
     )
   end
 
   def find_review
-    @review = Review.find(params[:id])
+    @review = Review.find params[:id]
+  end
+
+  def regions
+    @regions = Region.all
   end
 end
