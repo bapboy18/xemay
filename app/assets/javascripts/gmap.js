@@ -21,7 +21,7 @@ function loadScript()
 {
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "http://maps.googleapis.com/maps/api/js?key=&sensor=false&callback=initialize";
+  script.src = "http://maps.googleapis.com/maps/api/js?key=&callback=initialize";
   document.body.appendChild(script);
 }
 

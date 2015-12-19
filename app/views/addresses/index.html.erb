@@ -1,7 +1,8 @@
 <div>
   <% if @addresses.any? %>
     <div id="map-index" data-address="<%= @addresses.to_json %>">
-
+	    <div id="map-index-reviews" data-review="<%= @reviews.to_json %>">
+	    </div>
     </div>
     <% end %>
 </div>
