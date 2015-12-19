@@ -2,6 +2,10 @@ class AddressesController < ApplicationController
 
   def index
     @addresses = Address.all
+    @reviews = @addresses.inject([]) do |array, add|
+    	array << add.review
+    	array
+    end
   end
 
   private
